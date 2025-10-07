@@ -1,7 +1,7 @@
 # Script for installing the 3x‑UI panel for VLESS and 10‑year certificates
 
 ## Based on 
-Antenka's code from [repo].(https://github.com/anten-ka/self-signed-cert-script-by-antenka)
+Antenka's code from repo https://github.com/anten-ka/self-signed-cert-script-by-antenka
 
 ## 📚 Description
 This script automatically installs:
