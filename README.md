@@ -17,9 +17,6 @@ qrencode
 
 ## Secure server beforehand
 
-
----
-
 ### 🔑 1. Secure SSH Access
 
 ```bash
@@ -67,8 +64,6 @@ ssh-copy-id -p 2222 user@your-vps-ip
 PasswordAuthentication no
 ```
 
----
-
 ### 🛡️ 2. Firewall Setup
 
 #### Ubuntu / Debian (UFW)
@@ -88,8 +83,6 @@ sudo firewall-cmd --permanent --add-port=2222/tcp
 sudo firewall-cmd --reload
 ```
 
----
-
 ### 🔐 3. Keep System Updated
 
 #### Debian / Ubuntu
@@ -103,8 +96,6 @@ sudo apt update && sudo apt upgrade -y
 ```bash
 sudo yum update -y
 ```
-
----
 
 ### 🚨 4. Install Fail2Ban
 
@@ -120,8 +111,6 @@ sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 ```
 
----
-
 ### 🔍 5. Monitor Users & Processes
 
 ```bash
@@ -135,8 +124,6 @@ usermod -aG sudo myuser   # Ubuntu – add to sudo group
 sudo journalctl -xe
 sudo tail -f /var/log/auth.log
 ```
-
----
 
 ### 🧰 6. Optional but Recommended
 
@@ -157,8 +144,6 @@ sudo apt install libpam-google-authenticator
 # Then configure /etc/pam.d/sshd and /etc/ssh/sshd_config accordingly
 ```
 
----
-
 **Tip:** After any change to `sshd_config`, always verify the syntax before restarting:
 
 ```bash
@@ -167,7 +152,6 @@ sudo sshd -t
 
 If it reports `syntax OK`, you can safely restart.
 
----
 
 ## 🚀 How to use?
 
