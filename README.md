@@ -22,8 +22,6 @@ qrencode
 
 ### 🔑 1. Secure SSH Access
 
-bash
-
 ```bash
 # Edit the SSH daemon configuration
 sudo nano /etc/ssh/sshd_config
@@ -33,14 +31,10 @@ sudo nano /etc/ssh/sshd_config
 
 (Replace `2222` with whatever port you wish to use.)
 
-bash
-
-```bash
+```yaml
 # Inside /etc/ssh/sshd_config
 Port 2222
 ```
-
-bash
 
 ```bash
 # Restart SSH to apply changes
@@ -49,8 +43,6 @@ sudo systemctl restart ssh
 
 #### Disable root login
 
-bash
-
 ```bash
 # Inside /etc/ssh/sshd_config
 PermitRootLogin no
@@ -58,14 +50,10 @@ PermitRootLogin no
 
 #### Use SSH keys instead of passwords
 
-bash
-
 ```bash
 # On your local machine
 ssh-keygen -t ed25519
 ```
-
-bash
 
 ```bash
 # Copy the public key to the VPS (adjust port if you changed it)
@@ -73,8 +61,6 @@ ssh-copy-id -p 2222 user@your-vps-ip
 ```
 
 #### Disable password authentication
-
-bash
 
 ```bash
 # Inside /etc/ssh/sshd_config
@@ -87,8 +73,6 @@ PasswordAuthentication no
 
 #### Ubuntu / Debian (UFW)
 
-bash
-
 ```bash
 # Allow the new SSH port
 sudo ufw allow 2222/tcp
@@ -97,8 +81,6 @@ sudo ufw status
 ```
 
 #### CentOS / RedHat (firewalld)
-
-bash
 
 ```bash
 # Add the new SSH port permanently
@@ -112,15 +94,11 @@ sudo firewall-cmd --reload
 
 #### Debian / Ubuntu
 
-bash
-
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
 #### CentOS / RHEL
-
-bash
 
 ```bash
 sudo yum update -y
@@ -130,15 +108,11 @@ sudo yum update -y
 
 ### 🚨 4. Install Fail2Ban
 
-bash
-
 ```bash
 # Install
 sudo apt install fail2ban -y   # Debian/Ubuntu
 sudo yum install fail2ban -y   # CentOS/RHEL
 ```
-
-bash
 
 ```bash
 # Enable and start the service
@@ -150,15 +124,11 @@ sudo systemctl start fail2ban
 
 ### 🔍 5. Monitor Users & Processes
 
-bash
-
 ```bash
 # Create a non‑root user
 adduser myuser
 usermod -aG sudo myuser   # Ubuntu – add to sudo group
 ```
-
-bash
 
 ```bash
 # Check logs
@@ -170,22 +140,16 @@ sudo tail -f /var/log/auth.log
 
 ### 🧰 6. Optional but Recommended
 
-bash
-
 ```bash
 # Install intrusion detection tools
 sudo apt install rkhunter chkrootkit   # Debian/Ubuntu
 sudo yum install rkhunter chkrootkit   # CentOS/RHEL
 ```
 
-bash
-
 ```bash
 # Enable automatic security updates (Ubuntu/Debian)
 sudo apt install unattended-upgrades
 ```
-
-bash
 
 ```bash
 # Enable two‑factor authentication for SSH
@@ -196,8 +160,6 @@ sudo apt install libpam-google-authenticator
 ---
 
 **Tip:** After any change to `sshd_config`, always verify the syntax before restarting:
-
-bash
 
 ```bash
 sudo sshd -t
