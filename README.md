@@ -19,8 +19,8 @@ qrencode
 
 ### 🔑 1. Secure SSH Access
 
+Edit the SSH daemon configuration
 ```bash
-# Edit the SSH daemon configuration
 sudo nano /etc/ssh/sshd_config
 ```
 
@@ -28,39 +28,39 @@ sudo nano /etc/ssh/sshd_config
 
 (Replace `2222` with whatever port you wish to use.)
 
+Inside /etc/ssh/sshd_config
 ```yaml
-# Inside /etc/ssh/sshd_config
 Port 2222
 ```
 
+Restart SSH to apply changes
 ```bash
-# Restart SSH to apply changes
 sudo systemctl restart ssh
 ```
 
 #### Disable root login
 
+Inside /etc/ssh/sshd_config
 ```bash
-# Inside /etc/ssh/sshd_config
 PermitRootLogin no
 ```
 
 #### Use SSH keys instead of passwords
 
+On your local machine
 ```bash
-# On your local machine
 ssh-keygen -t ed25519
 ```
 
+Copy the public key to the VPS (adjust port if you changed it)
 ```bash
-# Copy the public key to the VPS (adjust port if you changed it)
 ssh-copy-id -p 2222 user@your-vps-ip
 ```
 
 #### Disable password authentication
 
+Inside /etc/ssh/sshd_config
 ```bash
-# Inside /etc/ssh/sshd_config
 PasswordAuthentication no
 ```
 
@@ -68,8 +68,8 @@ PasswordAuthentication no
 
 #### Ubuntu / Debian (UFW)
 
+Allow the new SSH port
 ```bash
-# Allow the new SSH port
 sudo ufw allow 2222/tcp
 sudo ufw enable
 sudo ufw status
