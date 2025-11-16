@@ -160,3 +160,11 @@ If it reports `syntax OK`, you can safely restart.
 ```bash
 sudo apt update && sudo apt install -y git curl openssl qrencode systemd && rm -rf ~/self-signed-cert-script && git clone https://github.com/unknown41760/self-signed-cert-script.git && cd self-signed-cert-script && chmod +x self_signed_cert.sh && sudo ./self_signed_cert.sh
 ```
+Openpanel only on local host
+```bash
+/usr/local/x-ui/x-ui setting -listenIP 127.0.0.1
+```
+Restart panel
+```bash
+systemctl restart x-ui
+```
