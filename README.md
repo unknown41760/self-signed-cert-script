@@ -75,6 +75,12 @@ sudo ufw enable
 sudo ufw status
 ```
 
+Make default rules
+```
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+```
+
 #### CentOS / RedHat (firewalld)
 
 ```bash
